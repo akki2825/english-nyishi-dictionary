@@ -141,8 +141,8 @@
 
 		<div class="invelope bottom">
 			<div id="sitefooter">
-				<div class="right"><a href="https://github.com/elexis-eu/lexonomy" class="github" title="GitHub" target="_blank"></a></div>
-				<div>Lexonomy is developed as part of <a href="https://elex.is/">ELEXIS</a> project.</div>
+				<div class="right"><a href="https://github.com/akki2825/english-nyishi-dictionary" class="github" title="GitHub" target="_blank"></a></div>
+				<div>Nyishi-English dictionary is developed as part of VANI project.</div>
 				%if version != "":
 				<div>Build version: {{version}}</div>
 				%end
