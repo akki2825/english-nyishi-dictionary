@@ -56,7 +56,7 @@ def sendmail(mailTo, mailSubject, mailText):
         message = "Subject: " + mailSubject + "\n\n" + mailText
         server.sendmail(siteconfig["mailconfig"]["from"], mailTo, message)
         server.quit()
-        
+
 
 # config
 def readDictConfigs(dictDB):
@@ -318,7 +318,7 @@ def logout(user):
 
 def sendSignupToken(email, remoteip):
     if siteconfig["readonly"]:
-        return False    
+        return False
     conn = getMainDB()
     c = conn.execute("select email from users where email=?", (email.lower(),))
     user = c.fetchone()
@@ -341,7 +341,7 @@ def sendSignupToken(email, remoteip):
 
 def sendToken(email, remoteip):
     if siteconfig["readonly"]:
-        return False    
+        return False
     conn = getMainDB()
     c = conn.execute("select email from users where email=?", (email.lower(),))
     user = c.fetchone()
@@ -455,7 +455,7 @@ def prepareApiKeyForSke(email):
             lexapi = row["apiKey"]
         sendApiKeyToSke(row, lexapi)
     return True
-    
+
 
 def processJWT(user, jwtdata):
     conn = getMainDB()
@@ -504,7 +504,7 @@ def makeDict(dictID, template, title, blurb, email):
     if title == "":
         title = "?"
     if blurb == "":
-        blurb = "Yet another Lexonomy dictionary."
+        blurb = ""
     if dictID in prohibitedDictIDs or dictExists(dictID):
         return False
     if not template.startswith("/"):
@@ -765,7 +765,7 @@ def readRandomOne(dictDB, dictID, configs):
         return {"id": 0, "title": "", "xml": ""}
 
 def download_xslt(configs):
-    if 'download' in configs and 'xslt' in configs['download'] and configs['download']['xslt'].strip != "" and len(configs['download']['xslt']) > 0 and configs['download']['xslt'][0] == "<": 
+    if 'download' in configs and 'xslt' in configs['download'] and configs['download']['xslt'].strip != "" and len(configs['download']['xslt']) > 0 and configs['download']['xslt'][0] == "<":
         import lxml.etree as ET
         try:
             xslt_dom = ET.XML(configs["download"]["xslt"].encode("utf-8"))
@@ -978,7 +978,7 @@ def updateDictConfig(dictDB, dictID, configID, content):
     dictDB.execute("delete from configs where id=?", (configID, ))
     dictDB.execute("insert into configs(id, json) values(?, ?)", (configID, json.dumps(content)))
     dictDB.commit()
-    
+
     if configID == "ident" or configID == "users":
         attachDict(dictDB, dictID)
         return content, False
@@ -1161,7 +1161,7 @@ def getEntryLinks(dictDB, dictID, entryID):
         ret["out"] = ret["out"] + links_get(dictID, r["element"], r["txt"], "", "", "")
         ret["in"] = ret["in"] + links_get("", "", "", dictID, r["element"], r["txt"])
     return ret
-        
+
 
 def updateEntryLinkables(dictDB, entryID, xml, configs, save=True, save_xml=True):
     from xml.dom import minidom, Node
@@ -1233,8 +1233,8 @@ def addFlag(xml, flag, flagconfig, xemaconfig):
 
     return "{0}<{1}>{2}</{1}>{3}".format(
             xml[:loc1], flag_element, flag, xml[loc2:])
-           
-            
+
+
 def getFlagElementPath(xema, flag_element):
     result = getFlagElementPath_recursive(xema, flag_element, xema["root"])
     if result is not None:
@@ -1400,4 +1400,3 @@ def addAutoNumbers(dictDB, dictID, countElem, storeElem):
             dictDB.execute("update entries set xml=?, needs_refac=0 where id=?", (xml, entryID))
     dictDB.commit()
     return process
-
