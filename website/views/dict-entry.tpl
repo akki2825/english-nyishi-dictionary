@@ -60,6 +60,7 @@
 						<a {{"class=current" if nabe["id"]==entryID else ""}} href="../../{{dictID}}/{{nabe["id"]}}">{{!nabe["title"]}}</a>
 					%end
 				</div>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSf__J4lKJYLsyzhLWMYFyDPxEIyPHNriMoCoBv2AvbtIN8UlA/viewform?entry.1935556122={{entryID}}&embedded=True"><i>Feedback</i></a>
 				<div class="clear"></div>
 			</div>
 		</div>
