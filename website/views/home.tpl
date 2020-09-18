@@ -146,10 +146,6 @@
 				%if version != "":
 				<div>Build version: {{version}}</div>
 				%end
-				<div class="logolint">
-					<a class="muni" target="_blank" href="https://www.muni.cz/" title="Masaryk University"></a>
-					<a class="ske" target="_blank" href="https://www.sketchengine.co.uk/" title="Sketch Engine"></a>
-				</div>
 			</div>
 		</div>
 
