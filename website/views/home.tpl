@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		%include("head.tpl")
-		<title>Lexonomy</title>
+		<title>Nyishi-English Dictionary</title>
 		<meta property="og:title" content="Lexonomy" />
 		<meta property="og:site_name" content="Lexonomy"/>
 		<meta name="description" content="A platform for writing and publishing dictionaries" />
